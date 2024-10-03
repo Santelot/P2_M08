@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P2-M08</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('step-6-activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P2-M08</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+    <!-- Actividad 0 -->
+    <div id="activity-0" class="activity">
+        <div class="banner" onclick="toggleContent('revision_materiales')">
+            <div class="title">📚 Actividad 0: Revisión de Materiales ⏰ Tiempo: N/A</div>
+            <div class="subtitle">Revisar la lista de materiales necesarios para la misión.</div>
+        </div>
+        <div id="revision_materiales" class="content">
+            <table>
+                <tr>
+                    <td><strong>PASO 1 (N/A):</strong> Proyectar la Diapositiva 1 con el título "Materiales y Preparación de la Misión". Revisar internamente que los estudiantes tengan acceso a la plataforma Code.org y que todo el material esté disponible y listo para su uso.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> N/A (Este paso es una revisión interna, no requiere diálogo directo con los estudiantes).</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Actividad 1 -->
+    <div id="activity-1" class="activity">
+        <div class="banner" onclick="toggleContent('saludo_gnius_club')">
+            <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+            <div class="subtitle">Saludo inicial y preparación para la misión.</div>
+        </div>
+        <div id="saludo_gnius_club" class="content">
+            <table>
+                <tr>
+                    <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Gnius Club".</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Buenos días, jóvenes exploradores! Hoy tenemos una misión increíble: ¡usaremos inteligencia artificial para salvar los océanos! ¿Están listos para esta aventura?"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?" y aprovechar para escanear quiénes pueden ser tus aliados el día de hoy.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de pasar a nuestro agradecimiento, me gustaría saber cómo están. Adopten la postura de acuerdo a cómo se sienten. Si están listos, hagan la señal treckie, si no, pulgar hacia abajo."</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar la Diapositiva 4 titulada "Ritual Gnius Club". Guiar a los estudiantes en el ritual de agradecimiento.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntamos nuestras manos y decimos: ¡Gracias por estar aquí, Genios! Hoy aprenderemos cosas maravillosas. ¡Es hora de empezar!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar la Diapositiva 5 titulada "Objetivos de la Misión". Leer en voz alta los objetivos del día.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos grandes objetivos: 1. Entrenar a una IA para distinguir entre peces y basura. 2. Reflexionar sobre cómo la tecnología puede ayudar a salvar los océanos."</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Actividad 2 -->
+    <div id="activity-2" class="activity">
+        <div class="banner" onclick="toggleContent('state_change')">
+            <div class="title">🧘‍♂️ Actividad 2: State Change ⏰ Tiempo: 2.5 minutos</div>
+            <div class="subtitle">Ejercicios de respiración para preparar el cerebro.</div>
+        </div>
+        <div id="state_change" class="content">
+            <table>
+                <tr>
+                    <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar la Diapositiva 6 titulada "State Change". Guiar a los estudiantes en un ejercicio de respiración.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar a entrenar la IA, necesitamos preparar nuestros cerebros. Vamos a hacer una breve respiración de OHM. Respiren profundamente conmigo... ¡listos! Una, dos, tres... OHM... ¿Lo sienten? ¡Ahora estamos en modo genio!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 2 (1 minuto):</strong> Proyectar la Diapositiva 7 con una ilustración de cómo realizar la "respiración de abeja".</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a hacer una respiración de abeja para enfocarnos aún más. Vamos a taparnos los oídos y ojos como un verdadero genio concentrado. A la cuenta de tres, respiramos y soltamos el aire haciendo el sonido de OHM, pero esta vez con todo el enfoque. ¡Vamos allá!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 3 (1 minuto):</strong> Proyectar la Diapositiva 8 que refuerza la relación entre la respiración y la concentración para el reto de programación.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer la respiración de abeja tres veces más, pero esta vez, piensen en cómo la IA nos ayudará a salvar los océanos. ¿Listos? ¡A la cuenta de tres! Una, dos, tres... OHM... ¡Muy bien, Genios! Ahora estamos listos para programar."</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Actividad 3 -->
+    <div id="activity-3" class="activity">
+        <div class="banner" onclick="toggleContent('challenge_intro')">
+            <div class="title">🚀 Actividad 3: Challenge: Introducción al Desafío ⏰ Tiempo: 26.5 minutos</div>
+            <div class="subtitle">Introducción al desafío de la clase y entrenamiento de IA en Code.org.</div>
+        </div>
+        <div id="challenge_intro" class="content">
+            <table>
+                <tr>
+                    <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar la Diapositiva 9 titulada "Portada del Challenge". Explicar el desafío de la clase.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, es hora del Challenge! Hoy vamos a entrenar una IA que aprenderá a distinguir entre peces y basura en el océano. ¡Es momento de salvar los océanos con nuestra inteligencia!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar la Diapositiva 10 con el enlace a Code.org y las instrucciones.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, entren en este link y completen las actividades 7 y 8 del programa 'IA para los Océanos'. Este enlace los llevará directamente al lugar correcto: https://studio.code.org/s/oceans/lessons/1/levels/7?no_redirect=1. ¡Recuerden, estas actividades les enseñarán cómo entrenar la IA para reconocer emociones y patrones especiales en los peces! ¡Es un reto muy importante!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 3 (25 minutos):</strong> Proyectar la Diapositiva 11 con un temporizador. Supervisar a los estudiantes mientras entrenan la IA en las actividades 7 y 8.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora tienen 25 minutos para completar las actividades 7 y 8 en Code.org. Asegúrense de que la IA reconozca correctamente las emociones de los peces y los patrones especiales. ¡Recuerden, la precisión es clave!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar la Diapositiva 12 con el avance de los objetivos. Reflexionar sobre los resultados obtenidos en las actividades 7 y 8.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien, Genios! Ahora que completaron las actividades 7 y 8, han entrenado la IA para reconocer emociones y patrones en los peces. Pero recuerden, siempre podemos mejorar la precisión de la IA. ¡Gran trabajo!"</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Actividad 4 -->
+    <div id="activity-4" class="activity">
+        <div class="banner" onclick="toggleContent('team_gnius')">
+            <div class="title">🤝 Actividad 4: Team Gnius ⏰ Tiempo: 13 minutos</div>
+            <div class="subtitle">Reflexión y trabajo en equipo para mejorar el entrenamiento de la IA.</div>
+        </div>
+        <div id="team_gnius" class="content">
+            <table>
+                <tr>
+                    <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar la Diapositiva 13 con el título "Portada de Team Gnius". Explicar la importancia del trabajo en equipo y la reflexión conjunta.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Es hora de Team Gnius! Ahora trabajaremos en equipo para reflexionar sobre lo que hemos hecho hasta ahora. Vamos a aprender juntos cómo mejorar nuestro trabajo y seguir siendo genios del equipo."</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar la Diapositiva 14 e indicar a los estudiantes que se organicen en equipos de 3 o 4 personas.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora es momento de formar equipos para nuestra reflexión. Organícense en grupos de 3 o 4, recuerden que vamos a trabajar juntos para aprender unos de otros. Tienen 30 segundos. ¡Adelante!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar la Diapositiva 15 titulada "Team Gnius". Dar la introducción a la actividad colaborativa.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que ya están en sus equipos, es momento de reflexionar juntos. ¿Cómo colaboraron para entrenar la IA? ¿Qué funcionó y qué se puede mejorar? ¡Vamos a compartir nuestras ideas para aprender unos de otros!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 4 (2 minutos):</strong> Proyectar la Diapositiva 16 con preguntas clave para reflexionar.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, reflexionen sobre estas preguntas con sus compañeros: 1. ¿Qué volverían a hacer igual en el entrenamiento de la IA? 2. ¿Qué harían diferente para mejorar la precisión? 3. ¿Cómo se ayudaron entre sí durante el proceso?"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 5 (5 minutos):</strong> Proyectar la Diapositiva 17 con un temporizador de 5 minutos para que los grupos discutan sus respuestas y reflexionen en conjunto.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Tienen 5 minutos para discutir en equipo. Recuerden, ¡cada idea cuenta! Escuchen a sus compañeros y tomen nota de las respuestas más importantes para compartir luego con el grupo."</td>
+                </tr>
+                <tr id="step-6-activity-4">
+                    <td><strong>PASO 6 (4 minutos):</strong> Proyectar la Diapositiva 18 titulada "Think-Pair-Share". Pedir a los equipos que compartan sus conclusiones con el grupo.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, quiero que un representante de cada equipo comparta sus respuestas. ¿Qué aprendieron sobre cómo colaborar mejor y cómo mejorar el entrenamiento de la IA?"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Avance de Objetivos" para revisar si los estudiantes lograron cumplir los objetivos de la misión.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Genios, lo han hecho! Reflexionamos sobre cómo trabajaron en equipo y cómo mejoraron la precisión de su IA. Recuerden, el trabajo colaborativo siempre nos lleva más lejos. ¡Gran trabajo hoy!"</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- Actividad 5 -->
+    <div id="activity-5" class="activity">
+        <div class="banner" onclick="toggleContent('honor_dojo')">
+            <div class="title">🏅 Actividad 5: Honor de Dojo ⏰ Tiempo: 8.5 minutos</div>
+            <div class="subtitle">Reconocimiento colectivo y reflexión sobre el trabajo realizado.</div>
+        </div>
+        <div id="honor_dojo" class="content">
+            <table>
+                <tr>
+                    <td><strong>PASO 1 (0.5 minutos):</strong> Felicitar a los estudiantes por su participación y esfuerzo sin destacar a individuos, enfocándose en el logro colectivo.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy todos ustedes trabajaron duro, reflexionaron y colaboraron para hacer que su IA fuera lo más precisa posible. ¡Estoy muy orgulloso del esfuerzo de todos y cada uno de ustedes!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 2 (5 minutos):</strong> Proyectar la Diapositiva 21 titulada "Reflexión Final". Guiar una reflexión rápida sobre lo aprendido y cómo cada uno contribuyó al éxito del equipo.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Piensen un momento en lo que lograron hoy: cómo trabajaron juntos, resolvieron problemas y mejoraron su IA. ¡Estos son pasos de verdaderos genios!"</td>
+                </tr>
+                <tr>
+                    <td><strong>PASO 3 (3 minutos):</strong> Proyectar la Diapositiva 22 con el título "Honrar el Espacio". Dar las instrucciones para ordenar el salón y recoger los materiales utilizados.</td>
+                    <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, es momento de honrar nuestro espacio de trabajo. Por favor, recojan todos los materiales que usaron y asegúrense de dejar el salón en perfectas condiciones. ¡Así demostramos respeto por nuestro entorno y por los demás!"</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
